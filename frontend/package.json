@@ -1,1 +1,16 @@
-
+{
+  "name": "truthlens-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for TruthLens AI fake news detection system",
+  "scripts": {
+    "serve": "python -m http.server 8080",
+    "start": "python -m http.server 8080"
+  },
+  "keywords": [
+    "truthlens",
+    "fake-news",
+    "frontend"
+  ],
+  "author": "",
+  "license": "ISC"
+}

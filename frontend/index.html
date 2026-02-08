@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthLens AI - Fake News Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 TruthLens AI</h1>
+            <p class="subtitle">Advanced Fake News Detection System</p>
+        </header>
 
+        <main>
+            <div class="input-section card">
+                <h2>Analyze News or Claims</h2>
+                
+                <div class="form-group">
+                    <label for="newsText">Text Input</label>
+                    <textarea 
+                        id="newsText" 
+                        placeholder="Paste news article, claim, or text to analyze..."
+                        rows="6"
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="newsImage">Or Upload Image (Screenshot)</label>
+                    <input type="file" id="newsImage" accept="image/*">
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+
+                <button id="analyzeBtn" class="btn-primary" onclick="analyzeNews()">
+                    Analyze Content
+                </button>
+            </div>
+
+            <div id="loadingIndicator" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing with AI-powered fact-checking...</p>
+            </div>
+
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <div class="card">
+                    <h2>Analysis Results</h2>
+                    
+                    <div class="verdict-container">
+                        <div class="verdict-badge" id="verdictBadge">
+                            <span id="verdictLabel">PENDING</span>
+                        </div>
+                        <div class="confidence-section">
+                            <label>Confidence Level</label>
+                            <div class="confidence-bar-container">
+                                <div id="confidenceBar" class="confidence-bar" style="width: 0%"></div>
+                            </div>
+                            <span id="confidenceText" class="confidence-text">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="explanation-section">
+                        <h3>Detailed Explanation</h3>
+                        <p id="explanationText"></p>
+                    </div>
+
+                    <div id="keyFindingsSection" class="section" style="display: none;">
+                        <h3>Key Findings</h3>
+                        <ul id="keyFindingsList" class="findings-list"></ul>
+                    </div>
+
+                    <div id="sourcesSection" class="section" style="display: none;">
+                        <h3>Sources</h3>
+                        <ul id="sourcesList" class="sources-list"></ul>
+                    </div>
+
+                    <div id="redFlagsSection" class="section red-flags" style="display: none;">
+                        <h3>⚠️ Red Flags</h3>
+                        <ul id="redFlagsList" class="red-flags-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Google Gemini 1.5 Pro with Live Search Grounding</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
