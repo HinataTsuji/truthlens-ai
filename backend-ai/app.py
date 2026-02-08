@@ -88,16 +88,18 @@ def analyze():
             try:
                 # Process image with Pillow for validation
                 image_bytes = file.read()
-                image = Image.open(io.BytesIO(image_bytes))
                 
-                # Verify it's a valid image
-                image.verify()
+                # Verify it's a valid image by trying to open it
+                try:
+                    image = Image.open(io.BytesIO(image_bytes))
+                    image.verify()  # Verify integrity
+                except Exception as verify_error:
+                    raise ValueError(f"Invalid or corrupted image: {str(verify_error)}")
                 
-                # Reset file pointer and create image data
-                file.seek(0)
+                # Create image data for Gemini (using the original bytes)
                 image_data = {
                     "mime_type": file.content_type or "image/jpeg",
-                    "data": file.read()
+                    "data": image_bytes
                 }
                 
                 if not text:

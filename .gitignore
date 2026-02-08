@@ -45,12 +45,10 @@ yarn.lock
 *.swp
 *.swo
 *~
-.DS_Store
 
 # OS
 Thumbs.db
 .DS_Store
-*.log
 
 # Docker
 *.pid
